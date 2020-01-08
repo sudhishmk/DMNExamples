@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_DB188B5A-D9DA-4CFA-A744-0B5E8F018295" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_DB61E41B-3AAB-400E-A4F2-3AC745C8DAA0" name="CalculateLoanInterestDemo" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_DB188B5A-D9DA-4CFA-A744-0B5E8F018295">
+  <dmn:extensionElements/>
+  <dmn:decision id="_E8D13BC9-D2D7-4DCA-9ACE-2E5CF10ABF75" name="Calculate Interest Rate for Loan">
+    <dmn:extensionElements/>
+    <dmn:variable id="_5EB60E5E-F6BB-4F79-94B2-73FB38FA9A05" name="Calculate Interest Rate for Loan" typeRef="number"/>
+    <dmn:informationRequirement id="_A0FB238A-D4D9-40D0-809E-3A8FE8F539E0">
+      <dmn:requiredInput href="#_FAE1769A-1902-4E55-B261-5B5ABEC47D3C"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_DDAB0481-D3C4-4263-B2D3-0498DF6AE9DF">
+      <dmn:requiredInput href="#_59999C4D-73C7-474D-B823-DA9AA3844E65"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_A72C4417-C23A-4D5F-93C3-DA92C9843F7F" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_2B8FCA80-639C-4C22-9047-51B400CF7E2D">
+        <dmn:inputExpression id="_DA96551B-B294-43CD-983F-70B2D593AD9D" typeRef="number">
+          <dmn:text>Age</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_23013011-9E89-4DCD-911D-EF3EC75DA32E">
+        <dmn:inputExpression id="_6127B26F-A611-46C2-94EB-6A2C20E25508" typeRef="number">
+          <dmn:text>Credit Score</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_E554DBDC-3DBD-4D4A-958F-21C49DC4A9FA" typeRef="number">
+        <dmn:description>Calculated Interest rates for loan</dmn:description>
+        <dmn:defaultOutputEntry id="_142F3714-85C4-42D1-BBF6-CAC06FB7555B">
+          <dmn:text>10</dmn:text>
+        </dmn:defaultOutputEntry>
+      </dmn:output>
+      <dmn:rule id="_D9E74552-BA3E-40E6-BA25-D1DEBFE229D4">
+        <dmn:description>Young Applicant with Average Credit Score</dmn:description>
+        <dmn:inputEntry id="_16AB8EE0-A19F-42AD-B375-75FB78A484A6">
+          <dmn:text>[18..30]</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_27FA9CA1-7CD8-459D-A9E9-0395727735BD">
+          <dmn:text>[300..800]</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_B108868E-B9CC-49FE-B24C-EBFACEB55B07">
+          <dmn:text>8.50
+</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_6E93464F-4173-4A5F-918E-2354D139859C">
+        <dmn:description>Young Applicant with Good Credit Score</dmn:description>
+        <dmn:inputEntry id="_070430C9-3198-446B-88D8-ACF5A0F37961">
+          <dmn:text>[18..30]</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1BE3E166-15C0-46B2-8867-E7D179AAEB26">
+          <dmn:text>&gt;800</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_D04C7DEF-1144-4CED-8795-A464D953B810">
+          <dmn:text>8.35</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_3D1253D0-396F-4634-9044-721A7B6010C4">
+        <dmn:description>Aged Applicant with Average credit score</dmn:description>
+        <dmn:inputEntry id="_2362167E-F9A3-4578-BE67-FC3BF08D2349">
+          <dmn:text>[31..50]</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D7E00658-C036-4919-8A36-730C41B31707">
+          <dmn:text>[300..800]</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_1ED11157-AD66-4364-8440-716566D8D98C">
+          <dmn:text>9.0</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_6CFB6705-05AD-4C41-A277-0447EDF8E2D1">
+        <dmn:description>Aged Applicant with Good Credit score</dmn:description>
+        <dmn:inputEntry id="_B0FABB52-AA25-43A9-AD6F-B4419AAD989F">
+          <dmn:text>[31..50]</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B738D8C9-59CE-4472-86B8-BA0569FA153E">
+          <dmn:text>&gt;800</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_DB1D7585-7845-4EB8-9FBE-5A5515C623D8">
+          <dmn:text>8.60</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:inputData id="_59999C4D-73C7-474D-B823-DA9AA3844E65" name="Age">
+    <dmn:description>Age of the Applicant</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:variable id="_B20CE529-9451-4B42-BDE6-282ACD177C8E" name="Age" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:inputData id="_FAE1769A-1902-4E55-B261-5B5ABEC47D3C" name="Credit Score">
+    <dmn:description>Credit Score of the Applicant</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:variable id="_51391196-CA01-49FD-B49E-7A8CBA4AE1CC" name="Credit Score" typeRef="number"/>
+  </dmn:inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_A72C4417-C23A-4D5F-93C3-DA92C9843F7F">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>432.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_FAE1769A-1902-4E55-B261-5B5ABEC47D3C" dmnElementRef="_FAE1769A-1902-4E55-B261-5B5ABEC47D3C" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="685" y="102" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_E8D13BC9-D2D7-4DCA-9ACE-2E5CF10ABF75" dmnElementRef="_E8D13BC9-D2D7-4DCA-9ACE-2E5CF10ABF75" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="480" y="278" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_59999C4D-73C7-474D-B823-DA9AA3844E65" dmnElementRef="_59999C4D-73C7-474D-B823-DA9AA3844E65" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="380" y="102" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_A0FB238A-D4D9-40D0-809E-3A8FE8F539E0" dmnElementRef="_A0FB238A-D4D9-40D0-809E-3A8FE8F539E0">
+        <di:waypoint x="785" y="127"/>
+        <di:waypoint x="480" y="303"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_DDAB0481-D3C4-4263-B2D3-0498DF6AE9DF" dmnElementRef="_DDAB0481-D3C4-4263-B2D3-0498DF6AE9DF">
+        <di:waypoint x="430" y="152"/>
+        <di:waypoint x="530" y="278"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
